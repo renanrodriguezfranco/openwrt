@@ -1,3 +1,15 @@
+From: Oever Gonzalez <notengobattery@gmail.com>
+Date: Mon, 7 Jan 2019 01:07:12 +0200
+Subject: [PATCH] ath: regd: add extra coutry codes
+
+This patch adds several country codes to the regd.h and regd_common.h
+files in order to support devices whose country codes are not present in
+the original list. Without this patch, all devices whose manufacturer
+programmed any of these code in their EEPROM will not work.
+
+Signed-off-by: Oever Gonzalez <notengobattery@gmail.com>
+---
+
 --- a/drivers/net/wireless/ath/regd.h
 +++ b/drivers/net/wireless/ath/regd.h
 @@ -185,7 +185,9 @@ enum CountryCode {

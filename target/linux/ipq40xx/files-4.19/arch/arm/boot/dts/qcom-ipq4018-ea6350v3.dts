@@ -219,6 +219,7 @@
 			/* 0x001c0000 - 0x00200000 unused */
 		};
 	};
+
 	flash@1 {
 		status = "okay";
 		compatible = "spi-nand", "w25n01gv";
@@ -236,23 +237,23 @@
 			};
 			rootfs@300000 {
 				label = "rootfs";
-				reg = <0x00300000 0x02800000>;
+				reg = <0x00300000 0x02500000>;
 			};
 			alt_kernel@2800000 {
 				label = "alt_kernel";
-				reg = <0x02800000 0x05000000>;
+				reg = <0x02800000 0x02800000>;
 			};
 			alt_rootfs@2b00000 {
 				label = "alt_rootfs";
-				reg = <0x02b00000 0x05000000>;
+				reg = <0x02b00000 0x02500000>;
 			};
 			sysdiag@5000000 {
 				label = "sysdiag";
-				reg = <0x05000000 0x05100000>;
+				reg = <0x05000000 0x00100000>;
 			};
 			syscfg@5100000 {
 				label = "syscfg";
-				reg = <0x05100000 0x08000000>;
+				reg = <0x05100000 0x02F00000>;
 			};
 			/* 0x00000000 - 0x08000000: 128 MiB */
 		};
