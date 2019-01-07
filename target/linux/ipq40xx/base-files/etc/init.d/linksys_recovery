@@ -1,0 +1,27 @@
+#!/bin/sh /etc/rc.common
+#
+# This script resets the boot counter and set the auto_recovery to 'yes'. This is not needed for stable relases. You
+# should keep this in all developer snapshots.
+# Linksys do enable the auto_recovery and set the boot counter to 0 during a firmware upgrade and this is also true for
+# a sysupgrade. When doing a stable release, please: remove this code and don't use the auto_recovery feature.
+# Note: if the device fails to set the boot couter to 0 while the auto_recovery feature is on, the device WILL reboot
+# to the other partition at the 3rd boot.
+
+START=97
+boot() {
+	. /lib/functions.sh
+
+	case $(board_name) in
+		linksys,ea6350v3)
+			# make sure auto_recovery in uboot is always on
+			IS_AUTO_RECOVERY="$(fw_printenv -n auto_recovery)"
+			if [ "$IS_AUTO_RECOVERY" != "yes" ] ; then
+				fw_setenv auto_recovery yes
+				echo "Linksys EA6350v3: fw_setenv: auto_recovery has been set to yes"
+			fi
+			# reset the boot counter
+			mtd resetbc s_env
+			echo "Linksys EA6350v3: mtd: boot counter has been reset"
+			;;
+	esac
+}
