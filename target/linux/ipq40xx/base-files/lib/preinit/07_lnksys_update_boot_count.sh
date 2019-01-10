@@ -6,7 +6,8 @@ set_preinit_boot_count() {
 	case $(board_name) in
 		linksys,ea6350v3)
 			fw_setenv boot_count 0
-			echo "Linksys EA6350v3: fw_setenv: boot counter has updated to 0"
+			mtd resetbc s_env
+			echo "Linksys EA6350v3: boot counter has updated to 0"
 			;;
 		*)
 			;;
