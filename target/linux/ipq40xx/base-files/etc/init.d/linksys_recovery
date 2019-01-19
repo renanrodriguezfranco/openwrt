@@ -6,8 +6,10 @@
 # a sysupgrade. When doing a stable release, please: remove this code and don't use the auto_recovery feature.
 # Note: if the device fails to set the boot couter to 0 while the auto_recovery feature is on, the device WILL reboot
 # to the other partition at the 3rd boot.
+#
+# Keep this script at the very very end of the boot process.
 
-START=97
+START=99z
 boot() {
 	. /lib/functions.sh
 
